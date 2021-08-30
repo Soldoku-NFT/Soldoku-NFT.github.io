@@ -1,5 +1,5 @@
 import { useWallet } from '@solana/wallet-adapter-react';
-import { Col, Layout, Row, Tabs } from 'antd';
+import { Col, Layout, Row, Tabs, Typography } from 'antd';
 import BN from 'bn.js';
 import React, { useMemo, useState } from 'react';
 import Masonry from 'react-masonry-css';
@@ -13,6 +13,7 @@ import { AuctionView, AuctionViewState, useAuctions } from '../../hooks';
 const { TabPane } = Tabs;
 
 const { Content } = Layout;
+const { Title } = Typography;
 
 export enum LiveAuctionViewState {
   All = '0',
@@ -150,7 +151,7 @@ export const AuctionListView = () => {
 
   return (
     <>
-      <PreSaleBanner auction={heroAuction} />
+      {heroAuction && <PreSaleBanner auction={heroAuction} />}
       <Layout>
         <Content style={{ display: 'flex', flexWrap: 'wrap' }}>
           <Col style={{ width: '100%', marginTop: 10 }}>
@@ -196,6 +197,14 @@ export const AuctionListView = () => {
                     </TabPane>
                   )}
                 </Tabs>
+              </Row>
+            )}
+            {liveAuctions.length === 0 && (
+              <Row>
+                <Title style={{textAlign: 'center'}}>
+                    Currently no auctions available.
+                    Check back later.
+                </Title>
               </Row>
             )}
           </Col>

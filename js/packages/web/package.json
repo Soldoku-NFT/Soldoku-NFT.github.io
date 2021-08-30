@@ -47,7 +47,7 @@
     "start:prod": "next start",
     "test": "jest",
     "deploy:ar": "yarn export && arweave deploy-dir  ../../build/web --key-file ",
-    "deploy": "cross-env ASSET_PREFIX=/ yarn build && yarn deploy:gh",
+    "build:site": "cross-env ASSET_PREFIX=/ yarn build && yarn export",
     "format:fix": "prettier --write \"**/*.+(js|jsx|ts|tsx|json|css|md)\""
   },
   "eslintConfig": {
