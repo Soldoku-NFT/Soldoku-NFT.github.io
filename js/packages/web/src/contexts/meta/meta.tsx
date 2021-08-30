@@ -95,9 +95,24 @@ export function MetaProvider({ children = null as any }) {
             connection,
             metadataByMint,
           );
+
+          const bl = [
+            'HWLcLUhbR2ubDGf7jYBDosQrMxCynWRwJTBD7zeJ5egJ',
+            'Cz8FaLirbBBGDADoPKtsjBbiCoyVzGCXsCfSeJDkCjFh',
+            'JC91KcZu4wb5bfgPFmWdvbG5GmxSaCcmaf3mGDDZqjdB',
+            'Atv2EpkH7mofYs1FmdKWgMCWqEyu6q87ZTHtHqB6F4pc',
+            'Frz7VRdcUukoXcFQS3FfDzrBwD4aorRUU8mcmr716oHr',
+            '2EKrwk9u8bMAQAUFTtToY8uB3KRwx6TCGrWzqmu75Pmv',
+            '9qLYFkNqFYi7vnEcNhRfAygTAN5EkxeKMcVvMQR5UgAJ',
+            '6Z9R6yithnFxC4JkX2VgeUyia88bJpwBHXcnFM2jLvez',
+            '8isioFfp6dWdAn6ARqgrnJkFLic8GmK5xeZfPU8nQp1j',
+            'EqNhPh2bMRCkj3X9st9JSBmedEuzPquVfJbkbVY6MUTG'
+          ]
+
+          const filtered = metadata.filter(m => bl.indexOf(m.pubkey) < 0);
           setState(current => ({
             ...current,
-            metadata,
+            metadata: filtered,
             metadataByMint: mintToMetadata,
           }));
         }
